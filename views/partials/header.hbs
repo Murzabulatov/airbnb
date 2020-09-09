@@ -29,10 +29,20 @@
         <a class="nav-link disabled" href="#">Disabled</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    <ul class="navbar-nav  my-4 my-lg-0">
+      {{#if username}}
+      <li class="nav-item">
+        <a class="nav-link" href="/signout">Выйти</a>
+      </li>
+      {{else}}
+      <li class="nav-item">
+        <a class="nav-link" href="/signin">Войти</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/signup">Зарегистрироваться</a>
+      </li>
+      {{/if}}
+    </ul>
   </div>
 </nav>
 <section class="jumbotron text-center">

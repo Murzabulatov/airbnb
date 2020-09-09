@@ -11,7 +11,7 @@ const carSchema = new mongoose.Schema({
   year: Number,
   description: String,
   price: Object,
-  location: Object,
+  location: Array,
   img: String,
 });
 

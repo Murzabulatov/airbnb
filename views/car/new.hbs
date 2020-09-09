@@ -1,19 +1,21 @@
-<form name="formSearch" action="/search" method="POST">
+<div id="map"></div>
+
+<form id="form" action="/car/new" method="POST">
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="brand">Марка:</label>
-      <input type="search" class="form-control" id="brand" name="brand" placeholder="например, Ford">
+      <input required type="text" class="form-control" id="brand" name="brand" placeholder="например, Ford">
     </div>
     <div class="form-group col-md-6">
       <label for="model">Модель:</label>
-      <input type="search" class="form-control" id="model" name="model" placeholder="например, Focus">
+      <input required type="text" class="form-control" id="model" name="model" placeholder="например, Focus">
     </div>
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-3">
       <label for="type">Тип кузова:</label>
-      <select id='type' name="type" class="form-control">
+      <select required id='type' name="type" class="form-control">
         <option disabled selected>например, седан</option>
         <option value="Sedan">Седан</option>
         <option value="Passenger Van">Мини-фургон</option>
@@ -21,7 +23,9 @@
         <option value="Wagon">Универсал</option>
         <option value="Minivan">Минивэн</option>
         <option value="Crew Cab Pickup">Пикап</option>
+        <option value="Cargo Van">Грузовой фургон</option>
         <option value="Extended Cab Pickup">Грузовой фургон</option>
+        <option value="Hatchback">Хэтчбек</option>
         <option value="Hatchback">Хэтчбек</option>
         <option value="Сrossover">Кроссовер</option>
         <option value="Coupe">Купе</option>
@@ -31,7 +35,7 @@
 
     <div class="form-group col-md-2">
       <label for="year">Год выпуска:</label>
-      <select id='year' name="year" class="form-control">
+      <select required id='year' name="year" class="form-control">
         <option disabled selected>Выберите год</option>
         <option value="1990">1990</option>
         <option value="1991">1991</option>
@@ -69,7 +73,7 @@
 
     <div class="form-group col-md-2">
       <label for="gearbox">Коробка передач:</label>
-      <select id='gearbox' name="gearbox" class="form-control">
+      <select required id='gearbox' name="gearbox" class="form-control">
         <option disabled selected>Выберите</option>
         <option value="automatic">АКПП</option>
         <option value="manual">МКПП</option>
@@ -78,7 +82,7 @@
 
     <div class="form-group col-md-2">
       <div class="form-check"><label for="seats">Кол-во мест:</label>
-        <input class="form-control" type="number" name="seats" min="2" max="7"></div>
+        <input required class="form-control" type="number" name="seats" min="2" max="7"></div>
     </div>
 
     <div class="form-group col-md-3">
@@ -96,31 +100,31 @@
       </div>
 
       <div class="black color_circle">
-        <label class="color_label" title="Черный"><input name="color" type="radio" value="black"></label>
+        <label class="color_label" title="Черный"><input required name="color" type="radio" value="black"></label>
       </div>
       <div class="white color_circle">
-        <label class="color_label" title="Белый"><input name="color" type="radio" value="white"></label>
+        <label class="color_label" title="Белый"><input required name="color" type="radio" value="white"></label>
       </div>
       <div class="grey color_circle">
-        <label class="color_label" title="Серый"><input name="color" type="radio" value="grey"></label>
+        <label class="color_label" title="Серый"><input required name="color" type="radio" value="grey"></label>
       </div>
       <div class="green color_circle">
-        <label class="color_label" title="Зеленый"><input name="color" type="radio" value="green"></label>
+        <label class="color_label" title="Зеленый"><input required name="color" type="radio" value="green"></label>
       </div>
       <div class="red color_circle">
-        <label class="color_label" title="Красный"><input name="color" type="radio" value="red"></label>
+        <label class="color_label" title="Красный"><input required name="color" type="radio" value="red"></label>
       </div>
       <div class="blue color_circle">
-        <label class="color_label" title="Синий"><input name="color" type="radio" value="blue"></label>
+        <label class="color_label" title="Синий"><input required name="color" type="radio" value="blue"></label>
       </div>
       <div class="yellow color_circle">
-        <label class="color_label" title="Желтый"><input name="color" type="radio" value="yellow"></label>
+        <label class="color_label" title="Желтый"><input required name="color" type="radio" value="yellow"></label>
       </div>
       <div class="pink color_circle">
-        <label class="color_label" title="Розовый"><input name="color" type="radio" value="pink"></label>
+        <label class="color_label" title="Розовый"><input required name="color" type="radio" value="pink"></label>
       </div>
     </div>
   </div>
 
-  <button type="submit" class="btn btn-primary btn-lg">Поиск</button>
+  <input type="submit" class="btn btn-primary">
 </form>
