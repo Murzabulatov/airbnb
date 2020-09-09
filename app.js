@@ -17,6 +17,7 @@ hbs.registerPartials(path.join(__dirname, 'views', 'partials'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use('/', indexRouter);
 app.use('/search', searchRouter);
