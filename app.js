@@ -1,6 +1,7 @@
 const express = require('express');
 const session = require('express-session');
 const sessionFileStore = require('session-file-store');
+
 const FileStore = sessionFileStore(session);
 const path = require('path');
 require('dotenv').config();
@@ -16,7 +17,6 @@ const signinRouter = require('./src/routes/signin.js');
 const signoutRouter = require('./src/routes/signout.js');
 const carRouter = require('./src/routes/car.js');
 
-
 const app = express();
 dbConnect();
 
@@ -29,18 +29,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(session({
-  name: app.get('session cookie name'),
-  secret: process.env.SECRET_KEY,
-  store: new FileStore({
+app.use(
+  session({
+    name: app.get('session cookie name'),
     secret: process.env.SECRET_KEY,
-  }),
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    secure: process.env.NODE_ENV === 'production',
-  },
-}));
+    store: new FileStore({
+      secret: process.env.SECRET_KEY,
+    }),
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      secure: process.env.NODE_ENV === 'production',
+    },
+  })
+);
 
 app.use(username);
 app.use('/', indexRouter);
@@ -50,7 +52,6 @@ app.use('/signup', signupRouter);
 app.use('/signin', signinRouter);
 app.use('/signout', signoutRouter);
 app.use('/car', carRouter);
-
 
 app.listen(process.env.PORT || 3000, (err) => {
   if (err) throw err;

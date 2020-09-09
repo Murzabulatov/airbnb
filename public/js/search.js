@@ -14,7 +14,7 @@ async function callbackForm(event) {
     year: event.target.year.value,
     gearbox: event.target.gearbox.value,
     seats: event.target.seats.value,
-    ac: event.target.ac.checked,
+    ac: event.target.ac.value,
     color: event.target.color.value,
   };
   console.log(formSend);
@@ -24,9 +24,7 @@ async function callbackForm(event) {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(
-      formSend
-    ),
+    body: JSON.stringify(formSend),
   });
 
   const data = await response.json();

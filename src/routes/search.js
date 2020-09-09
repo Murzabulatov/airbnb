@@ -3,52 +3,42 @@ const Car = require('../models/car.js');
 
 const router = express.Router();
 
-router.route('/')
+router
+  .route('/')
   .get((req, res) => {
     res.render('search', { isSearch: true });
   })
   .post(async (req, res) => {
-    const {
-      brand,
-      model,
-      type,
-      year,
-      gearbox,
-      seats,
-      ac,
-      color,
-    } = req.body;
-
-
+    const { brand, model, type, year, gearbox, seats, ac, color } = req.body;
+    console.log(typeof seats);
     let objSearch = {};
     for (let reqKey in req.body) {
-      console.log(reqKey, typeof req.body[reqKey]);
-      if (reqKey === 'ac') {
-        objSearch[reqKey] = (req.body[reqKey]);
+      if (typeof req.body[reqKey] === 'boolean') {
+        objSearch[reqKey] = req.body[reqKey];
+      } else if (
+        req.body[reqKey].includes('например') ||
+        req.body[reqKey].includes('Выберите') ||
+        req.body[reqKey] === ''
+      ) {
       } else {
-        if (req.body[reqKey].includes('например') || req.body[reqKey].includes('Выберите')) {
-          objSearch[reqKey] = '';
-        } else {
-          objSearch[reqKey] = (req.body[reqKey]);
-        }
+        objSearch[reqKey] = new RegExp(req.body[reqKey], 'i');
       }
-
     }
 
-    // console.log(req.body);
     console.log(objSearch);
 
     try {
-      const foundCars = await Car.find({
-        brand: new RegExp(objSearch.brand, 'i'),
-        model: new RegExp(objSearch.model, 'i'),
-        type: objSearch.type,
+      const foundCars = await Car.find(
+        objSearch
+        // brand: new RegExp(objSearch.brand, 'i'),
+        // model: new RegExp(objSearch.model, 'i'),
+        // type: objSearch.type,
         // year: objSearch.year,
         // gearbox: objSearch.gearbox,
         // seats: objSearch.seats,
         // ac: objSearch.ac,
         // color: objSearch.color,
-      }).exec();
+      );
 
       console.log(foundCars);
       // const currentGame = await Game.findById(gameId);
@@ -64,8 +54,7 @@ router.route('/')
       // });
 
       return res.render('search', { isSearch: true });
-    }
-    catch (err) {
+    } catch (err) {
       return res.render('search', { errors: [err] });
     }
   });

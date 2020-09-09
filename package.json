@@ -4,9 +4,8 @@
   "description": "Salavat, Nikita, Hasan, Vadim",
   "main": "app.js",
   "scripts": {
-    "test": "nodemon app.js --ignore sessions",
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js --ignore sessions"
   },
   "repository": {
     "type": "git",
