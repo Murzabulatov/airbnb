@@ -13,10 +13,10 @@ router.route('/')
     try {
       await entry.save();
       // throw Error('You shall not pass');
-      return res.redirect(`entries/${entry.id}`);
+      return res.render('search');
     }
     catch (err) {
-      return res.render('entries/new', { errors: [err] });
+      return res.render('search', { errors: [err] });
     }
   });
 

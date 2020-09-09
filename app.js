@@ -6,6 +6,7 @@ const path = require('path');
 require('dotenv').config();
 const hbs = require('hbs');
 const dbConnect = require('./dbConnect.js');
+
 const username = require('./src/middlewears/user.js');
 
 const indexRouter = require('./src/routes/index.js');
@@ -13,6 +14,8 @@ const searchRouter = require('./src/routes/search.js');
 const signupRouter = require('./src/routes/signup.js');
 const signinRouter = require('./src/routes/signin.js');
 const signoutRouter = require('./src/routes/signout.js');
+const carRouter = require('./src/routes/car.js');
+
 
 const app = express();
 dbConnect();
@@ -42,9 +45,12 @@ app.use(session({
 app.use(username);
 app.use('/', indexRouter);
 app.use('/search', searchRouter);
+
 app.use('/signup', signupRouter);
 app.use('/signin', signinRouter);
 app.use('/signout', signoutRouter);
+app.use('/car', carRouter);
+
 
 app.listen(process.env.PORT || 3000, (err) => {
   if (err) throw err;
