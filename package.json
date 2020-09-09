@@ -1,0 +1,32 @@
+{
+  "name": "airbnb",
+  "version": "1.0.0",
+  "description": "Salavat, Nikita, Hasan, Vadim",
+  "main": "app.js",
+  "scripts": {
+    "test": "nodemon app.js --ignore sessions"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Murzabulatov/airbnb.git"
+  },
+  "author": "Salavat M. / Vadim H./ Hasan B./ Nikita N./",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Murzabulatov/airbnb/issues"
+  },
+  "homepage": "https://github.com/Murzabulatov/airbnb#readme",
+  "devDependencies": {
+    "eslint": "^7.8.1",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "hbs": "^4.1.1",
+    "mongoose": "^5.10.3",
+    "nodemon": "^2.0.4",
+    "path": "^0.12.7"
+  }
+}
