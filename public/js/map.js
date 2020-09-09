@@ -1,5 +1,6 @@
 ymaps.ready(init);
 let myMap;
+let carLocation;
 
 function init() {
   myMap = new ymaps.Map(
@@ -14,26 +15,16 @@ function init() {
     }
   );
 
-  let car = new ymaps.Placemark(
-    [57.5262, 38.3061],
-    {
-      balloonContent: 'car',
-    },
-    {
-      preset: 'islands#circleIcon',
-      iconColor: '#3caa3c',
-    }
-  );
-  myMap.geoObjects.add(car);
   // Обработка события, возникающего при щелчке
   // левой кнопкой мыши в любой точке карты.
   // При возникновении такого события откроем балун.
   myMap.events.add('click', function (e) {
     console.log(e.get('coords'));
 
-    myMap.geoObjects.remove(car);
-
-    car = new ymaps.Placemark(
+    if (carLocation) {
+      myMap.geoObjects.remove(carLocation);
+    }
+    carLocation = new ymaps.Placemark(
       e.get('coords'),
       {
         balloonContent: 'car',
@@ -44,6 +35,6 @@ function init() {
       }
     );
 
-    myMap.geoObjects.add(car);
+    myMap.geoObjects.add(carLocation);
   });
 }

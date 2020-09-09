@@ -5,15 +5,16 @@ const User = require('../models/user');
 const Car = require('../models/car');
 
 router.get('/new', (req, res) => {
-  res.render('car/new', { yandexAPI: process.env.API });
+  res.render('car/new', { yandexAPI: process.env.API, carNew: true });
 });
 router.post('/new', async (req, res) => {
   const carNew = new Car(req.body);
   await carNew.save();
 
-  await User.findByIdAndUpdate(req.session.user, {
-    $push: { cars: carNew._id },
-  });
+  // await User.findByIdAndUpdate(req.session.user, {
+  //   $push: { cars: carNew._id },
+  // });
+
   // const {
   //   brand,
   //   model,
@@ -28,8 +29,9 @@ router.post('/new', async (req, res) => {
   //   location,
   //   img,
   // } = req.body;
-
-  // res.redirect('search');
+  // res.end();
+  res.end();
+  //res.redirect('/search');
 });
 
 module.exports = router;
