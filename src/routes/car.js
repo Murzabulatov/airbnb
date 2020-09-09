@@ -1,37 +1,26 @@
 const express = require('express');
 const router = express.Router();
 require('dotenv').config();
+const isAuthMiddlewear = require('../middlewears/isAuth');
 const User = require('../models/user');
 const Car = require('../models/car');
 
-router.get('/new', (req, res) => {
-  res.render('car/new', { yandexAPI: process.env.API, carNew: true });
-});
-router.post('/new', async (req, res) => {
-  const carNew = new Car(req.body);
-  await carNew.save();
+router
+  .route('/new')
+  .get(isAuthMiddlewear, (req, res) => {
+    res.render('car/new', { yandexAPI: process.env.API, carNew: true });
+  })
+  .post(isAuthMiddlewear, async (req, res) => {
+    console.log(req.body);
 
-  // await User.findByIdAndUpdate(req.session.user, {
-  //   $push: { cars: carNew._id },
-  // });
+    const carNew = new Car(req.body);
+    await carNew.save();
 
-  // const {
-  //   brand,
-  //   model,
-  //   gearbox,
-  //   ac,
-  //   seats,
-  //   type,
-  //   color,
-  //   year,
-  //   description,
-  //   price,
-  //   location,
-  //   img,
-  // } = req.body;
-  // res.end();
-  res.end();
-  //res.redirect('/search');
-});
+    await User.findByIdAndUpdate(req.session.user.id, {
+      $push: { cars: carNew._id },
+    });
+
+    res.end();
+  });
 
 module.exports = router;

@@ -12,9 +12,9 @@ const userSchema = new mongoose.Schema({
     required: true,
     minlength: 4,
   },
-  deals: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Deal' }],
-  cars: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Car' }],
-  admin: Boolean,
+  deals: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Deal', default: [] }],
+  cars: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Car', default: [] }],
+  admin: { type: Boolean, default: false },
   registrationDate: Date,
 });
 

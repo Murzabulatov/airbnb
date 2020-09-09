@@ -10,7 +10,7 @@ async function callbackSubmit(event) {
     brand: { value: brand },
     model: { value: model },
     gearbox: { value: gearbox },
-    ac: { checked: ac },
+    ac: { value: ac },
     seats: { value: seats },
     type: { value: type },
     color: { value: color },
@@ -39,5 +39,5 @@ async function callbackSubmit(event) {
     }),
   });
 
-  return window.location.assign('/search');
+  // return window.location.assign('/search');
 }
