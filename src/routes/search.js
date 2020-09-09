@@ -9,10 +9,10 @@ router
     res.render('search', { isSearch: true });
   })
   .post(async (req, res) => {
-    const { brand, model, type, year, gearbox, seats, ac, color } = req.body;
+    // const { brand, model, type, year, gearbox, seats, ac, color } = req.body;
     console.log(typeof seats);
     let objSearch = {};
-    for (let reqKey in req.body) {
+    for (const reqKey in req.body) {
       if (typeof req.body[reqKey] === 'boolean') {
         objSearch[reqKey] = req.body[reqKey];
       } else if (
@@ -20,6 +20,7 @@ router
         req.body[reqKey].includes('Выберите') ||
         req.body[reqKey] === ''
       ) {
+        // ничего не делаем
       } else {
         objSearch[reqKey] = new RegExp(req.body[reqKey], 'i');
       }
@@ -28,17 +29,7 @@ router
     console.log(objSearch);
 
     try {
-      const foundCars = await Car.find(
-        objSearch
-        // brand: new RegExp(objSearch.brand, 'i'),
-        // model: new RegExp(objSearch.model, 'i'),
-        // type: objSearch.type,
-        // year: objSearch.year,
-        // gearbox: objSearch.gearbox,
-        // seats: objSearch.seats,
-        // ac: objSearch.ac,
-        // color: objSearch.color,
-      );
+      const foundCars = await Car.find(objSearch);
 
       console.log(foundCars);
       // const currentGame = await Game.findById(gameId);

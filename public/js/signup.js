@@ -10,9 +10,9 @@ newUserForm.addEventListener('submit', async (event) => {
   } = event.target;
   console.log(username, password, corpassword);
   if (username.length >= 4 && password.length >= 4) {
-    console.log('Ok')
+    console.log('Ok');
     if (password === corpassword) {
-      console.log('Ok')
+      console.log('Ok');
       const body = {
         username,
         password,
@@ -25,6 +25,8 @@ newUserForm.addEventListener('submit', async (event) => {
         },
         body: JSON.stringify(body),
       });
+      // window.location.assign('/profile');
+      window.location.assign('/');
     } else {
       newUserForm.insertAdjacentHTML('afterend', 'Заполните форму корректно!');
     }
