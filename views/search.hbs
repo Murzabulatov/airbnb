@@ -1,4 +1,4 @@
-<form action="/search" method="POST">
+<form name="formSearch" action="/search" method="POST">
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="brand">Марка:</label>
@@ -21,9 +21,7 @@
         <option value="Wagon">Универсал</option>
         <option value="Minivan">Минивэн</option>
         <option value="Crew Cab Pickup">Пикап</option>
-        <option value="Cargo Van">Грузовой фургон</option>
         <option value="Extended Cab Pickup">Грузовой фургон</option>
-        <option value="Hatchback">Хэтчбек</option>
         <option value="Hatchback">Хэтчбек</option>
         <option value="Сrossover">Кроссовер</option>
         <option value="Coupe">Купе</option>
@@ -73,7 +71,6 @@
       <label for="gearbox">Коробка передач:</label>
       <select id='gearbox' name="gearbox" class="form-control">
         <option disabled selected>Выберите</option>
-
         <option value="automatic">АКПП</option>
         <option value="manual">МКПП</option>
       </select>
@@ -96,7 +93,7 @@
       <div class="form-check">
         <label for="ac">Система кондиционирования:</label>
         <div class="needed">
-          <input class="form-check-input" type="checkbox" id="ac">
+          <input name="ac" class="form-check-input" type="checkbox" id="ac" value="true">
           <label class="form-check-label" for="ac" name="ac">
             нужна
           </label>
@@ -138,5 +135,5 @@
     </div>
   </div>
 
-  <button type="submit" class="btn btn-primary">Поиск</button>
+  <button type="submit" class="btn btn-primary btn-lg">Поиск</button>
 </form>

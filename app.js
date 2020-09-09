@@ -16,12 +16,13 @@ hbs.registerPartials(path.join(__dirname, 'views', 'partials'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use('/', indexRouter);
 app.use('/search', searchRouter);
 
 
 app.listen(process.env.PORT || 3000, (err) => {
-    if (err) throw err;
-    console.log(`Server listening on port ${process.env.PORT}`);
+  if (err) throw err;
+  console.log(`Server listening on port ${process.env.PORT}`);
 });
