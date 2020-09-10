@@ -1,6 +1,6 @@
-const dbConnect = require('./dbConnect.js');
-const Car = require('./src/models/car');
-dbConnect();
+// const dbConnect = require('./dbConnect.js');
+// const Car = require('./src/models/car');
+// dbConnect();
 
 // dist = 20 #дистанция 20 км
 // mylon = 51.5289156201 # долгота центра
@@ -11,10 +11,10 @@ dbConnect();
 // lat2 = mylat+(dist/111.0)
 // profiles = UserProfile.objects.filter(lat__range=(lat1, lat2)).filter(lon__range=(lon1, lon2))
 
-async function cars() {
-  let cars = await Car.find();
-  return cars.filter((car) => car.location.length);
-}
+// async function cars() {
+//   let cars = await Car.find();
+//   return cars.filter((car) => car.location.length);
+// }
 
 function degToRad(degrees) {
   return degrees * (Math.PI / 180);
