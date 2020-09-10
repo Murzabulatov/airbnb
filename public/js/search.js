@@ -1,6 +1,8 @@
 console.log('search_page');
 
 const formSearch = document.forms.formSearch;
+let result = document.getElementById('result');
+let resultArr = [];
 
 formSearch.addEventListener('submit', callbackForm);
 
@@ -15,6 +17,7 @@ async function callbackForm(event) {
     gearbox: event.target.gearbox.value,
     seats: event.target.seats.value,
     ac: event.target.ac.value,
+    price: event.target.price.value,
     color: event.target.color.value,
   };
   console.log(formSend);
@@ -28,7 +31,48 @@ async function callbackForm(event) {
   });
 
   const data = await response.json();
+
   console.log(data);
+  viewResult(data);
+}
+
+function viewResult(arrayOfCars) {
+  let resultHTML = '';
+  if (resultArr.length) {
+    for (let car of resultArr) {
+      myMap.geoObjects.remove(car);
+    }
+  }
+
+  for (let car of arrayOfCars) {
+    let mapCar = new ymaps.Placemark(
+      car.location,
+      {
+        balloonContent: `${car.brand} ${car.model} ${car.year}`,
+      },
+      {
+        preset: 'islands#circleIcon',
+        iconColor: '#32CD32',
+      }
+    );
+
+    resultArr.push(mapCar);
+    myMap.geoObjects.add(mapCar);
+
+    result += `<div>${car.brand}<br>
+    ${car.model}<br>
+    ${car.gearbox}<br>
+    ${car.ac}<br>
+    ${car.seats}<br>
+    ${car.type}<br>
+    ${car.color}<br>
+    ${car.year}<br>
+    ${car.description}<br>
+    ${car.price}<br>
+    ${car.img}</div>\n`;
+  }
+
+  result.innerHTML = resultHTML;
 }
 
 // async function start() {

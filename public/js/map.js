@@ -6,7 +6,7 @@ function init() {
   myMap = new ymaps.Map(
     'map',
     {
-      center: [57.5262, 38.3061], // Углич
+      center: [55.753215, 37.622504], // Москва
       zoom: 11,
     },
     {
