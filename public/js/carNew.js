@@ -33,7 +33,11 @@ async function callbackSubmit(event) {
     type,
     color,
     year,
-    price: { day: priceDay, week: priceWeek, month: priceMonth },
+    price: {
+      day: Number(priceDay),
+      week: Number(priceWeek),
+      month: Number(priceMonth),
+    },
     location: carLocation.geometry._coordinates,
   };
 
