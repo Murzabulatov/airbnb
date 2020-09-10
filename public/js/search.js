@@ -17,8 +17,15 @@ async function callbackForm(event) {
     ac: event.target.ac.value,
     price: event.target.price.value,
     color: event.target.color.value,
+    location: carLocation?.geometry._coordinates,
+    distance: event.target.distance.value,
   };
   console.log(formSend);
+
+
+  if ((formSend.location && formSend.distance === '') || (!formSend.location && formSend.distance)) {
+    return alert('Укажите точку на карте и выберите дистанцию поиска (10-100)');
+  }
 
   const response = await fetch('/search', {
     method: 'POST',
@@ -31,6 +38,12 @@ async function callbackForm(event) {
   const data = await response.json();
   console.log(data);
 }
+
+
+const resetButton = document.querySelector('#reset');
+resetButton.addEventListener('click', (event) => {
+  myMap.geoObjects.remove(carLocation);
+})
 
 // async function start() {
 //   const response = await fetch('/game', {

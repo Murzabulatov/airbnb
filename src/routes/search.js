@@ -6,7 +6,7 @@ const router = express.Router();
 router
   .route('/')
   .get((req, res) => {
-    res.render('search', { isSearch: true });
+    res.render('search', { isSearch: true, yandexAPI: process.env.API });
   })
   .post(async (req, res) => {
     // const { brand, model, type, year, gearbox, seats, ac, color } = req.body;
@@ -16,7 +16,7 @@ router
     for (const reqKey in req.body) {
       if (
         /например|выберите/i.test(req.body[reqKey]) ||
-        req.body[reqKey] === ''
+        req.body[reqKey] === '' || reqKey === 'location' || reqKey === 'distance'
       ) {
         // ничего не делаем
       } else if (typeof req.body[reqKey] === 'boolean') {
@@ -48,8 +48,12 @@ router
 
     try {
       const foundCars = await Car.find(objSearch);
+      // console.log(foundCars);
 
-      console.log(foundCars);
+      // YANDEX.MAP
+      if (req.body.location.length && req.body.distance.length) {
+        findCarsWithLoc(req.body.location, Number(req.body.distance), foundCars)
+      }
       // const currentGame = await Game.findById(gameId);
       // const currentDeck = await Deck.findById(currentGame.deck).populate('cards');
       // let currentTrueAnswer = await Card.findById(currentAnswerId);
@@ -67,5 +71,40 @@ router
       return res.render('search', { errors: [err] });
     }
   });
+
+
+
+// ФУНКЦИИ 
+
+function degToRad(degrees) {
+  return degrees * (Math.PI / 180);
+}
+
+async function findCarsWithLoc(center, distance, carsArray) {
+  // center = [xx.xxxx,yy.yyyy]
+  let lon1 =
+    center[0] - distance / Math.abs(Math.cos(degToRad(center[1])) * 111.0); // 1 градус широты = 111 км
+  let lon2 =
+    center[0] + distance / Math.abs(Math.cos(degToRad(center[1])) * 111.0);
+
+  let lat1 = center[1] - distance / 111.0;
+  let lat2 = center[1] + distance / 111.0;
+
+  console.log('---', lon1, lon2);
+  console.log('+++', lat1, lat2);
+
+  carsArray = carsArray.filter((car) => {
+    return car.location[0] > lon1 && car.location[0] < lon2;
+  });
+  carsArray = carsArray.filter((car) => {
+    // console.log('==-', car.location[1] > lat1);
+    // console.log('==+', car.location[1], '<', lat1, car.location[1] < lat1);
+
+    return car.location[1] > lat1 && car.location[1] < lat2;
+  });
+
+  //console.log('filter1', filter1);
+  console.log('filter2', carsArray);
+}
 
 module.exports = router;
