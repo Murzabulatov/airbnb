@@ -10,7 +10,11 @@ router
   })
   .post(async (req, res) => {
     // const { brand, model, type, year, gearbox, seats, ac, color } = req.body;
-    console.log(req.body);
+    console.log('ПРИШЛО ОТ КЛИЕНТА', req.body);
+    //  let locationReq = req.body.location;
+    let distanceReq = req.body.distance;
+    // console.log('>>>>>>>>>', locationReq);
+    // console.log('<<<<<<<<', distanceReq);
 
     let objSearch = {};
     for (const reqKey in req.body) {
@@ -30,9 +34,6 @@ router
         const priceStart = Number(priceArr[0]);
         const priceEnd = Number(priceArr[1]);
 
-        console.log(priceStart, priceEnd);
-        console.log('THIS IS PRICE');
-
         objSearch["price.day"] = { $gte: priceStart, $lte: priceEnd }
 
       } else {
@@ -40,33 +41,32 @@ router
       }
     }
 
-
-
     console.log(objSearch);
-
-
 
     try {
       const foundCars = await Car.find(objSearch);
       // console.log(foundCars);
+      console.log('FOUND CARS', foundCars);
 
       // YANDEX.MAP
-      if (req.body.location.length && req.body.distance.length) {
-        findCarsWithLoc(req.body.location, Number(req.body.distance), foundCars)
+
+
+      // ВСЁ РАБОТАЕТ, но РАЗНИЦА В ЗАПИСИ строчки PRICE : "number" or "string"
+
+
+
+
+      if (distanceReq.length) { // ОШИБКА БЫЛА ЗДЕСЬ В УСЛОВИИ 
+        const carsAJAX = await findCarsWithLoc(
+          req.body.location, Number(req.body.distance), foundCars
+        );
+        console.log(carsAJAX);
+        res.json({ array: carsAJAX });
+        return;
       }
-      // const currentGame = await Game.findById(gameId);
-      // const currentDeck = await Deck.findById(currentGame.deck).populate('cards');
-      // let currentTrueAnswer = await Card.findById(currentAnswerId);
 
-      // if (currentAnswerId) currentTrueAnswer = currentTrueAnswer.answer;
-
-      // res.json({
-      //   currentGame,
-      //   currentDeck,
-      //   currentTrueAnswer,
-      // });
-
-      return res.render('search', { isSearch: true });
+      res.json({ array: foundCars });
+      return;
     } catch (err) {
       return res.render('search', { errors: [err] });
     }
@@ -103,8 +103,9 @@ async function findCarsWithLoc(center, distance, carsArray) {
     return car.location[1] > lat1 && car.location[1] < lat2;
   });
 
-  //console.log('filter1', filter1);
-  console.log('filter2', carsArray);
+  // console.log('filter2', carsArray);
+  console.log('ФУНКЦИЯ С ЛОКЕЦШН', carsArray);
+  return carsArray;
 }
 
 module.exports = router;

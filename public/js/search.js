@@ -1,6 +1,4 @@
-console.log('search_page');
-
-const formSearch = document.forms.formSearch;
+const formSearch1 = document.forms.formSearch;
 let result = document.getElementById('result');
 let resultArr = [];
 
@@ -40,7 +38,7 @@ async function callbackForm(event) {
   const data = await response.json();
 
   console.log(data);
-  viewResult(data);
+  // viewResult(data);
 }
 
 function viewResult(arrayOfCars) {
