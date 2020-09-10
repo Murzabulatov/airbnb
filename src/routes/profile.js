@@ -6,7 +6,6 @@ const router = express.Router();
 
 router.get('/', isAuth, async (req, res) => {
   const user = await User.findOne({ _id: req.session?.user.id });
-  console.log(user);
   res.render('profile', { user });
 });
 
@@ -16,7 +15,7 @@ router.get('/edit', isAuth, async (req, res) => {
 });
 
 router.post('/edit', isAuth, async (req, res) => {
-  const user = await User.findOne({ _id: req.session?.user.id });
-  res.render('profileEdit', user);
+  await User.findByIdAndUpdate(req.session?.user.id, req.body);
+  res.json();
 });
 module.exports = router;
