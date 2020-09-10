@@ -1,4 +1,4 @@
-const formSearch1 = document.forms.formSearch;
+const formSearch = document.forms.formSearch;
 let result = document.getElementById('result');
 let resultArr = [];
 
@@ -20,10 +20,12 @@ async function callbackForm(event) {
     location: carLocation?.geometry._coordinates,
     distance: event.target.distance.value,
   };
-  console.log(formSend);
+  // console.log(formSend);
 
-
-  if ((formSend.location && formSend.distance === '') || (!formSend.location && formSend.distance)) {
+  if (
+    (formSend.location && formSend.distance === '') ||
+    (!formSend.location && formSend.distance)
+  ) {
     return alert('Укажите точку на карте и выберите дистанцию поиска (10-100)');
   }
 
@@ -35,13 +37,15 @@ async function callbackForm(event) {
     body: JSON.stringify(formSend),
   });
 
-  const data = await response.json();
-
+  let data = JSON.parse(await response.json());
+  // data = JSON.parse(data);
   console.log(data);
-  // viewResult(data);
+  result.innerHTML = '';
+  viewResult(data);
 }
 
 function viewResult(arrayOfCars) {
+  console.log('viewResult', arrayOfCars);
   let resultHTML = '';
   if (resultArr.length) {
     for (let car of resultArr) {
@@ -64,7 +68,7 @@ function viewResult(arrayOfCars) {
     resultArr.push(mapCar);
     myMap.geoObjects.add(mapCar);
 
-    result += `<div>${car.brand}<br>
+    resultHTML += `<div>${car.brand}<br>
     ${car.model}<br>
     ${car.gearbox}<br>
     ${car.ac}<br>
@@ -80,40 +84,7 @@ function viewResult(arrayOfCars) {
   result.innerHTML = resultHTML;
 }
 
-
 const resetButton = document.querySelector('#reset');
 resetButton.addEventListener('click', (event) => {
   myMap.geoObjects.remove(carLocation);
-})
-
-// async function start() {
-//   const response = await fetch('/game', {
-//     method: 'POST', // *GET, POST, PUT, DELETE, etc.
-//     headers: {
-//       'Content-Type': 'application/json',
-//       // 'Content-Type': 'application/x-www-form-urlencoded',
-//     },
-//     body: JSON.stringify({
-//       gameId,
-//     }),
-//   });
-
-//   const {
-//     currentGame,
-//     currentDeck,
-//   } = await response.json();
-
-//   homeLink.href = `/profile/${currentGame.user}`;
-
-//   if (currentGame.counterTrueAnswer.length < currentDeck.cards.length) {
-//     for (const card of currentDeck.cards) {
-//       if (!currentGame.counterTrueAnswer.includes(card._id)) {
-//         questionString.innerText = card.question;
-//         answerForm.name = card._id;
-//         break;
-//       }
-//     }
-//   } else {
-//     window.location.href = `/profile/${currentGame.user}`;
-//   }
-// }
+});

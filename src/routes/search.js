@@ -9,78 +9,54 @@ router
     res.render('search', { isSearch: true, yandexAPI: process.env.API });
   })
   .post(async (req, res) => {
-    // const { brand, model, type, year, gearbox, seats, ac, color } = req.body;
-    console.log('ПРИШЛО ОТ КЛИЕНТА', req.body);
-    //  let locationReq = req.body.location;
-    let distanceReq = req.body.distance;
-    // console.log('>>>>>>>>>', locationReq);
-    // console.log('<<<<<<<<', distanceReq);
-
     let objSearch = {};
     for (const reqKey in req.body) {
       if (
         /например|выберите/i.test(req.body[reqKey]) ||
-        req.body[reqKey] === '' || reqKey === 'location' || reqKey === 'distance'
+        req.body[reqKey] === '' ||
+        reqKey === 'location' ||
+        reqKey === 'distance'
       ) {
         // ничего не делаем
       } else if (typeof req.body[reqKey] === 'boolean') {
         objSearch[reqKey] = req.body[reqKey];
       } else if (reqKey === 'price') {
         // сложная логика
-        const regEx = /\d+/gmi;
+        const regEx = /\d+/gim;
         const priceArr = req.body[reqKey].match(regEx);
-        //console.log(priceArr);
-
         const priceStart = Number(priceArr[0]);
         const priceEnd = Number(priceArr[1]);
 
-        objSearch["price.day"] = { $gte: priceStart, $lte: priceEnd }
-
+        objSearch['price.day'] = { $gte: priceStart, $lte: priceEnd };
       } else {
         objSearch[reqKey] = new RegExp(req.body[reqKey], 'i');
       }
     }
 
-    console.log(objSearch);
+    let foundCars = await Car.find(objSearch);
+    // Если результат поиска пустой - останавливаем работу.
+    if (foundCars.length === 0) return res.end();
 
-    try {
-      const foundCars = await Car.find(objSearch);
-      // console.log(foundCars);
-      console.log('FOUND CARS', foundCars);
-
-      // YANDEX.MAP
-
-
-      // ВСЁ РАБОТАЕТ, но РАЗНИЦА В ЗАПИСИ строчки PRICE : "number" or "string"
-
-
-
-
-      if (distanceReq.length) { // ОШИБКА БЫЛА ЗДЕСЬ В УСЛОВИИ 
-        const carsAJAX = await findCarsWithLoc(
-          req.body.location, Number(req.body.distance), foundCars
-        );
-        console.log(carsAJAX);
-        res.json({ array: carsAJAX });
-        return;
-      }
-
-      res.json({ array: foundCars });
-      return;
-    } catch (err) {
-      return res.render('search', { errors: [err] });
+    // YANDEX.MAP
+    if (req.body.location?.length && req.body.distance.length) {
+      foundCars = findCarsWithLoc(
+        req.body.location,
+        Number(req.body.distance),
+        foundCars
+      );
+      console.log('findCarsWithLoc', foundCars);
     }
+    // console.log('==result==', foundCars);
+
+    return res.json(JSON.stringify(foundCars));
   });
 
-
-
-// ФУНКЦИИ 
-
+// ФУНКЦИИ
 function degToRad(degrees) {
   return degrees * (Math.PI / 180);
 }
 
-async function findCarsWithLoc(center, distance, carsArray) {
+function findCarsWithLoc(center, distance, arrayOfCars) {
   // center = [xx.xxxx,yy.yyyy]
   let lon1 =
     center[0] - distance / Math.abs(Math.cos(degToRad(center[1])) * 111.0); // 1 градус широты = 111 км
@@ -90,22 +66,14 @@ async function findCarsWithLoc(center, distance, carsArray) {
   let lat1 = center[1] - distance / 111.0;
   let lat2 = center[1] + distance / 111.0;
 
-  console.log('---', lon1, lon2);
-  console.log('+++', lat1, lat2);
-
-  carsArray = carsArray.filter((car) => {
+  arrayOfCars = arrayOfCars.filter((car) => {
     return car.location[0] > lon1 && car.location[0] < lon2;
   });
-  carsArray = carsArray.filter((car) => {
-    // console.log('==-', car.location[1] > lat1);
-    // console.log('==+', car.location[1], '<', lat1, car.location[1] < lat1);
-
+  arrayOfCars = arrayOfCars.filter((car) => {
     return car.location[1] > lat1 && car.location[1] < lat2;
   });
 
-  // console.log('filter2', carsArray);
-  console.log('ФУНКЦИЯ С ЛОКЕЦШН', carsArray);
-  return carsArray;
+  return arrayOfCars;
 }
 
 module.exports = router;
