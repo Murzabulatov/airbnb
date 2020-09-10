@@ -30,7 +30,9 @@
 <body>
   <div class="container">
     {{> header}}
-    {{{body}}}
+    <div class="jumbotron text-center pt-4">
+      {{{body}}}
+    </div>
   </div>
   {{#if isSearch}}
   <script src="/js/search.js"></script>
