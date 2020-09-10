@@ -4,18 +4,18 @@
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="brand">Марка:</label>
-      <input type="search" class="form-control" id="brand" name="brand" placeholder="например, Ford">
+      <input required type="search" class="form-control" id="brand" name="brand" placeholder="например, Ford">
     </div>
     <div class="form-group col-md-6">
       <label for="model">Модель:</label>
-      <input type="search" class="form-control" id="model" name="model" placeholder="например, Focus">
+      <input required type="search" class="form-control" id="model" name="model" placeholder="например, Focus">
     </div>
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-3">
       <label for="type">Тип кузова:</label>
-      <select id='type' name="type" class="form-control">
+      <select required id='type' name="type" class="form-control">
         <option disabled selected>например, седан</option>
         <option value="Sedan">Седан</option>
         <option value="Passenger Van">Мини-фургон</option>
@@ -33,7 +33,7 @@
 
     <div class="form-group col-md-2">
       <label for="year">Год выпуска:</label>
-      <select id='year' name="year" class="form-control">
+      <select required id='year' name="year" class="form-control">
         <option disabled selected>Выберите год</option>
         <option value="1990">1990</option>
         <option value="1991">1991</option>
@@ -71,7 +71,7 @@
 
     <div class="form-group col-md-2">
       <label for="gearbox">Коробка передач:</label>
-      <select id='gearbox' name="gearbox" class="form-control">
+      <select required id='gearbox' name="gearbox" class="form-control">
         <option disabled selected>Выберите</option>
         <option value="automatic">АКПП</option>
         <option value="manual">МКПП</option>
@@ -80,16 +80,34 @@
 
     <div class="form-group col-md-2">
       <div class="form-check"><label for="seats">Кол-во мест:</label>
-        <input class="form-control" type="number" name="seats" min="2" max="7"></div>
+        <input required class="form-control" type="number" name="seats" min="2" max="7"></div>
     </div>
 
     <div class="form-group col-md-3">
       <label for="ac">Система кондиционирования:</label>
-      <select id='ac' name="ac" class="form-control">
+      <select required id='ac' name="ac" class="form-control">
         <option disabled selected>Выберите</option>
         <option value="true">Установлена</option>
         <option value="false">Отсутствует</option>
       </select>
+    </div>
+
+    <div class="form-group col-md-4">
+      <div class="form-check"><label for="priceDay">Стоимость аренды руб./сутки<br>
+          (до 7 дней):</label>
+        <input required class="form-control" type="number" name="priceDay"></div>
+    </div>
+
+    <div class="form-group col-md-4">
+      <div class="form-check"><label for="priceWeek">Стоимость аренды руб./сутки<br>
+          (от 7 до 30 дней):</label>
+        <input required class="form-control" type="number" name="priceWeek"></div>
+    </div>
+
+    <div class="form-group col-md-4">
+      <div class="form-check"><label for="priceMonth">Стоимость аренды руб./сутки<br>
+          (более 30 дней):</label>
+        <input required class="form-control" type="number" name="priceMonth"></div>
     </div>
 
     <div class="form-row">
