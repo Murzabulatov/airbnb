@@ -67,7 +67,8 @@
   padding-top: 7px;
 }
 
-.btn.btn-primary {
+.btn.btn-primary, .btn.btn-warning {
+
   margin-top: 20px;
 }
 

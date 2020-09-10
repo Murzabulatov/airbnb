@@ -15,6 +15,7 @@ async function callbackForm(event) {
     gearbox: event.target.gearbox.value,
     seats: event.target.seats.value,
     ac: event.target.ac.value,
+    price: event.target.price.value,
     color: event.target.color.value,
   };
   console.log(formSend);

@@ -86,8 +86,7 @@
         <label for="ac">Система кондиционирования:</label>
         <input class="form-check-input form-control" type="checkbox" id="ac" name="ac">
       </div>
-    </div>
-  </div> --}}
+    </div> --}}
 
     <div class="form-group col-md-3">
       <label for="ac">Система кондиционирования:</label>
@@ -97,40 +96,63 @@
         <option value="false">Отсутствует</option>
       </select>
     </div>
+  </div>
 
-    <div class="form-row">
-      <div class="form-check d-flex flex-row .align-items-center">
-        <div class="color_circle">
-          Цвет:
-        </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="date1">Дата начало:</label>
+      <input type="search" class="form-control" id="date1" name="rentStart" placeholder="начало аренды">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="model">конец:</label>
+      <input type="search" class="form-control" id="date2" name="rentStop" placeholder="конец аренды">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="price">Ценовой диапазон</label>
+      <select id='price' name="price" class="form-control">
+        <option disabled selected>Выберите</option>
+        <option value="500-2000">500-2000 руб</option>
+        <option value="2000-5000">2000-5000 руб</option>
+        <option value="5000-10000">5000-10000 руб</option>
+        <option value="10000-100000">>10000 руб</option>
+      </select>
+    </div>
+  </div>
 
-        <div class="black color_circle">
-          <label class="color_label" title="Черный"><input name="color" type="radio" value="black"></label>
-        </div>
-        <div class="white color_circle">
-          <label class="color_label" title="Белый"><input name="color" type="radio" value="white"></label>
-        </div>
-        <div class="grey color_circle">
-          <label class="color_label" title="Серый"><input name="color" type="radio" value="grey"></label>
-        </div>
-        <div class="green color_circle">
-          <label class="color_label" title="Зеленый"><input name="color" type="radio" value="green"></label>
-        </div>
-        <div class="red color_circle">
-          <label class="color_label" title="Красный"><input name="color" type="radio" value="red"></label>
-        </div>
-        <div class="blue color_circle">
-          <label class="color_label" title="Синий"><input name="color" type="radio" value="blue"></label>
-        </div>
-        <div class="yellow color_circle">
-          <label class="color_label" title="Желтый"><input name="color" type="radio" value="yellow"></label>
-        </div>
-        <div class="pink color_circle">
-          <label class="color_label" title="Розовый"><input name="color" type="radio" value="pink"></label>
-        </div>
+  <div class="form-row">
+    <div class="form-check d-flex flex-row .align-items-center">
+      <div class="color_circle">
+        Цвет:
+      </div>
+
+      <div class="black color_circle">
+        <label class="color_label" title="Черный"><input name="color" type="radio" value="black"></label>
+      </div>
+      <div class="white color_circle">
+        <label class="color_label" title="Белый"><input name="color" type="radio" value="white"></label>
+      </div>
+      <div class="grey color_circle">
+        <label class="color_label" title="Серый"><input name="color" type="radio" value="grey"></label>
+      </div>
+      <div class="green color_circle">
+        <label class="color_label" title="Зеленый"><input name="color" type="radio" value="green"></label>
+      </div>
+      <div class="red color_circle">
+        <label class="color_label" title="Красный"><input name="color" type="radio" value="red"></label>
+      </div>
+      <div class="blue color_circle">
+        <label class="color_label" title="Синий"><input name="color" type="radio" value="blue"></label>
+      </div>
+      <div class="yellow color_circle">
+        <label class="color_label" title="Желтый"><input name="color" type="radio" value="yellow"></label>
+      </div>
+      <div class="pink color_circle">
+        <label class="color_label" title="Розовый"><input name="color" type="radio" value="pink"></label>
       </div>
     </div>
+  </div>
 
-    <button type="submit" class="btn btn-primary btn-lg">Поиск</button>
-    <button type="reset" class="btn btn-warning btn-lg">Очистить</button>
+  <button type="submit" class="btn btn-primary btn-lg"> Поиск </button>
+
+  <button type="reset" class="btn btn-warning btn-lg">Очистить</button>
 </form>
