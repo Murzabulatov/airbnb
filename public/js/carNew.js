@@ -15,10 +15,36 @@ async function callbackSubmit(event) {
     type: { value: type },
     color: { value: color },
     year: { value: year },
+    priceDay: { value: priceDay },
+    priceWeek: { value: priceWeek },
+    priceMonth: { value: priceMonth },
   } = event.target;
 
   if (!carLocation) {
     return alert('Укажите на карте место стоянки авто.');
+  }
+
+  let data = {
+    brand,
+    model,
+    gearbox,
+    ac,
+    seats,
+    type,
+    color,
+    year,
+    price: {
+      day: Number(priceDay),
+      week: Number(priceWeek),
+      month: Number(priceMonth),
+    },
+    location: carLocation.geometry._coordinates,
+  };
+
+  for (let key in data) {
+    if (data[key] === '' || /например|выберите/i.test(data[key])) {
+      return alert('Заполните все поля.');
+    }
   }
 
   await fetch(action, {
@@ -26,17 +52,7 @@ async function callbackSubmit(event) {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-      brand,
-      model,
-      gearbox,
-      ac,
-      seats,
-      type,
-      color,
-      year,
-      location: carLocation.geometry._coordinates,
-    }),
+    body: JSON.stringify(data),
   });
 
   // return window.location.assign('/search');

@@ -17,6 +17,8 @@ const signinRouter = require('./src/routes/signin.js');
 const signoutRouter = require('./src/routes/signout.js');
 const carRouter = require('./src/routes/car.js');
 const dealRouter = require('./src/routes/deal.js');
+const profileRouter = require('./src/routes/profile.js');
+
 
 const app = express();
 dbConnect();
@@ -54,6 +56,8 @@ app.use('/signin', signinRouter);
 app.use('/signout', signoutRouter);
 app.use('/car', carRouter);
 app.use('/deal', dealRouter);
+app.use('/profile', profileRouter);
+
 
 app.listen(process.env.PORT || 3000, (err) => {
   if (err) throw err;
