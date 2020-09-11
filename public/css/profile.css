@@ -28,4 +28,33 @@
   font-size: small;
 }
 
+.car-info{
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(194, 194, 194);
+  padding: 3em;
+  border-radius: 10px;
+  box-shadow: 0 0 7px #666; 
+  margin-top: 2em;
+}
 
+.car-info div{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.carpicture{
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  border: 3px solid rgb(0, 87, 128); 
+  box-shadow: 0 0 7px #666; 
+  margin-right: 3;
+}
+
+.car-item{
+  margin-top: 2px;
+  margin-bottom: 0;
+  font-size: small;
+}

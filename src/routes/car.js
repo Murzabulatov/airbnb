@@ -12,8 +12,6 @@ router
     res.render('car/new', { yandexAPI: process.env.API, carNew: true });
   })
   .post(isAuthMiddlewear, async (req, res) => {
-    console.log(req.body);
-
     const carNew = new Car(req.body);
     await carNew.save();
 
@@ -23,5 +21,7 @@ router
 
     res.end();
   });
+
+router.route('/:id').post(async (req, res) => {});
 
 module.exports = router;

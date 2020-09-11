@@ -240,6 +240,7 @@ function viewResult(arrayOfCars) {
         </dl>
         
         `;
+
       }
     }
   } else {
@@ -253,4 +254,5 @@ function viewResult(arrayOfCars) {
 const resetButton = document.querySelector('#reset');
 resetButton.addEventListener('click', (event) => {
   myMap.geoObjects.remove(carLocation);
+  carLocation = undefined;
 });

@@ -6,7 +6,12 @@ const { DB_PATH, DB_NAME } = process.env;
 const dbConnect = () => {
   mongoose.connect(
     `${DB_PATH}${DB_NAME}`,
-    { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true },
+    {
+      useUnifiedTopology: true,
+      useNewUrlParser: true,
+      useCreateIndex: true,
+      useFindAndModify: true,
+    },
     (err) => {
       if (err) throw err;
       console.log('DB connection success');

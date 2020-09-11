@@ -18,6 +18,7 @@ async function callbackSubmit(event) {
     priceDay: { value: priceDay },
     priceWeek: { value: priceWeek },
     priceMonth: { value: priceMonth },
+    description: { value: description },
   } = event.target;
 
   if (!carLocation) {
@@ -33,6 +34,7 @@ async function callbackSubmit(event) {
     type,
     color,
     year,
+    description,
     price: {
       day: Number(priceDay),
       week: Number(priceWeek),

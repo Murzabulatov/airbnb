@@ -68,23 +68,38 @@ function degToRad(degrees) {
 }
 
 function findCarsWithLoc(center, distance, arrayOfCars) {
-  // center = [xx.xxxx,yy.yyyy]
-  let lon1 =
-    center[0] - distance / Math.abs(Math.cos(degToRad(center[1])) * 111.0); // 1 градус широты = 111 км
-  let lon2 =
-    center[0] + distance / Math.abs(Math.cos(degToRad(center[1])) * 111.0);
-
-  let lat1 = center[1] - distance / 111.0;
-  let lat2 = center[1] + distance / 111.0;
-
-  arrayOfCars = arrayOfCars.filter((car) => {
-    return car.location[0] > lon1 && car.location[0] < lon2;
+  return arrayOfCars.filter((car) => {
+    return (
+      latlng2distance(center[0], center[1], car.location[0], car.location[1]) <
+      distance
+    );
   });
-  arrayOfCars = arrayOfCars.filter((car) => {
-    return car.location[1] > lat1 && car.location[1] < lat2;
-  });
+}
 
-  return arrayOfCars;
+function latlng2distance(lat1, long1, lat2, long2) {
+  //радиус Земли
+  var R = 6372795;
+  //перевод коордитат в радианы
+  lat1 *= Math.PI / 180;
+  lat2 *= Math.PI / 180;
+  long1 *= Math.PI / 180;
+  long2 *= Math.PI / 180;
+  //вычисление косинусов и синусов широт и разницы долгот
+  var cl1 = Math.cos(lat1);
+  var cl2 = Math.cos(lat2);
+  var sl1 = Math.sin(lat1);
+  var sl2 = Math.sin(lat2);
+  var delta = long2 - long1;
+  var cdelta = Math.cos(delta);
+  var sdelta = Math.sin(delta);
+  //вычисления длины большого круга
+  var y = Math.sqrt(
+    Math.pow(cl2 * sdelta, 2) + Math.pow(cl1 * sl2 - sl1 * cl2 * cdelta, 2)
+  );
+  var x = sl1 * sl2 + cl1 * cl2 * cdelta;
+  var ad = Math.atan2(y, x);
+  var dist = (ad * R) / 1000; //расстояние между двумя координатами в метрах
+  return dist;
 }
 
 module.exports = router;
