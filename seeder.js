@@ -96,6 +96,16 @@ async function deals() {
     rentStop: new Date('2020-11-25T03:24:00'),
   });
   await deal3.save();
+
+  let deal4 = new Deal({
+    donor: '5f5b76fbee1b043eae5bef24', // сюда впишите id своих юзеров, т.к. автоматически создавать аккаунты с паролем не умею
+    recipient: '5f5b78828194bb0fcce41dd0', // сюда тоже
+    car: carsArray[8],
+    signingDate: new Date('2020-09-01T03:24:00'),
+    rentStart: new Date('2020-11-01T03:24:00'),
+    rentStop: new Date('2020-11-25T03:24:00'),
+  });
+  await deal4.save();
 }
 
 deals();
