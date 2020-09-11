@@ -16,9 +16,8 @@
   <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
     <h3><span>Информация о пользователе</span></h3>
     <div id="user-info">
-      <div id="user-avatar" class="mr-3">
-        <img id="userpic" src="https://www.meme-arsenal.com/memes/19f1d0627b84eed4a5a08878ce684b2f.jpg" alt="userpic"
-          width="200px" height="200px">
+      <div class="mr-3">
+        <img id="userpic" src="https://www.meme-arsenal.com/memes/19f1d0627b84eed4a5a08878ce684b2f.jpg" alt="userpic">
       </div>
       <div>
         <p class="user-item">ФИО: <span>{{user.firstName}} {{user.lastName}}</span></p>
@@ -29,6 +28,21 @@
       </div>
     </div>
   </div>
-  <div class="tab-pane fade" id="pills-cars" role="tabpanel" aria-labelledby="pills-cars-tab">...</div>
-  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+  <div class="tab-pane fade" id="pills-cars" role="tabpanel" aria-labelledby="pills-cars-tab">
+    <div class="car-info">
+      <div class="car-picture mr-3">
+        <img class="carpicture" src="http://www.neponsethumane.org/wp-content/uploads/2019/04/Cats-in-cars.png"
+          alt="car">
+      </div>
+      <div>
+        <p class="car-item">ФИО: <span>{{user.firstName}} {{user.lastName}}</span></p>
+        <p class="car-item">Дата рождения: <span>{{user.birthDate}}</span></p>
+        <p class="car-item">Телефон: <span>{{user.phone}}</span></p>
+        <p class="car-item">Email: <span>{{user.email}}</span></p>
+        <a href="/profile/edit" class="car-item">Редактировать</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
 </div>

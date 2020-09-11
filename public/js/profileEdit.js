@@ -25,4 +25,13 @@ editForm.addEventListener('submit', async (event) => {
     },
     body: JSON.stringify(body),
   });
+  response.json().then((data) => {
+    if (data.message) {
+      editForm.insertAdjacentHTML('beforeend', `<h2 class="my-2">${data.message}</h2>`);
+      window.location.href = '/profile';
+    }
+    if (data.error) {
+      editForm.insertAdjacentHTML('beforeend', `<h2 class="my-2">${data.error}</h2>`);
+    }
+  });
 });
