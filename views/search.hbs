@@ -9,7 +9,7 @@
 <form name="formSearch" action="/search" method="POST">
   <div class="form-row d-flex flex-row align-items-center justify-content-center">
     <div class="form-group col-md-6 d-flex flex-column align-items-center justify-content-center">
-      <label for=" distance">Укажите точку на карте и выберите дистанцию поиска (10-100):</label>
+      <label for=" distance">Укажите точку на карте и выберите радиус поиска (10-100 км):</label>
       <input type="number" id="distance" name="distance" min="10" max="100">
     </div>
   </div>
@@ -99,13 +99,6 @@
         <input class="form-control" type="number" name="seats" min="2" max="7"></div>
     </div>
 
-    {{!-- <div class="form-group col-md-3">
-      <div class="form-check">
-        <label for="ac">Система кондиционирования:</label>
-        <input class="form-check-input form-control" type="checkbox" id="ac" name="ac">
-      </div>
-    </div> --}}
-
     <div class="form-group col-md-3">
       <label for="ac">Система кондиционирования:</label>
       <select id='ac' name="ac" class="form-control">
@@ -178,4 +171,8 @@
   <button id="reset" type="reset" class="btn btn-warning btn-lg">Очистить</button>
 </form>
 </section>
-<section id="result" class="jumbotron text-center">
+
+
+<section id="result" class="jumbotron">
+
+</section>
