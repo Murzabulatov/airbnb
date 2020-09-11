@@ -68,8 +68,8 @@ async function deals() {
   }
 
   let deal1 = new Deal({
-    donor: '5f5b76b6ee1b043eae5bef21', // сюда впишите id своих юзеров, т.к. автоматически создавать аккаунты с паролем не умею
-    recipient: '5f5b77d47197d90ecba2681a', // сюда тоже
+    donor: '5f5a65d8fbe484959ef500cc', // сюда впишите id своих юзеров, т.к. автоматически создавать аккаунты с паролем не умею
+    recipient: '5f592379292b58a1a86c9429', // сюда тоже
     car: carsArray[0],
     signingDate: new Date('2020-09-05T03:24:00'),
     rentStart: new Date('2020-09-15T03:24:00'),
@@ -78,8 +78,8 @@ async function deals() {
   await deal1.save();
 
   let deal2 = new Deal({
-    donor: '5f5b76cdee1b043eae5bef22', // сюда впишите id своих юзеров, т.к. автоматически создавать аккаунты с паролем не умею
-    recipient: '5f5b77e17197d90ecba2681b', // сюда тоже
+    donor: '5f5a65d8fbe484959ef500cc', // сюда впишите id своих юзеров, т.к. автоматически создавать аккаунты с паролем не умею
+    recipient: '5f592379292b58a1a86c9429', // сюда тоже
     car: carsArray[4],
     signingDate: new Date('2020-09-06T03:24:00'),
     rentStart: new Date('2020-10-15T03:24:00'),
@@ -88,8 +88,8 @@ async function deals() {
   await deal2.save();
 
   let deal3 = new Deal({
-    donor: '5f5b76e9ee1b043eae5bef23', // сюда впишите id своих юзеров, т.к. автоматически создавать аккаунты с паролем не умею
-    recipient: '5f5b77ec7197d90ecba2681c', // сюда тоже
+    donor: '5f592379292b58a1a86c9429', // сюда впишите id своих юзеров, т.к. автоматически создавать аккаунты с паролем не умею
+    recipient: '5f5a65d8fbe484959ef500cc', // сюда тоже
     car: carsArray[6],
     signingDate: new Date('2020-09-01T03:24:00'),
     rentStart: new Date('2020-11-01T03:24:00'),

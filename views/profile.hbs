@@ -31,17 +31,22 @@
   <div class="tab-pane fade" id="pills-cars" role="tabpanel" aria-labelledby="pills-cars-tab">
     <h3><span>Мои автомобили</span></h3>
     <div class="car-info">
-      <div class="car-picture mr-3">
-        <img class="carpicture" src="http://www.neponsethumane.org/wp-content/uploads/2019/04/Cats-in-cars.png"
-          alt="car">
+      {{#each user.cars}}
+      <div class="car-card">
+        <div class="car-picture mr-3">
+          <img class="carpicture" src="http://www.neponsethumane.org/wp-content/uploads/2019/04/Cats-in-cars.png"
+            alt="car">
+        </div>
+        <div>
+
+          <p class="car-item"><span>{{brand}} {{model}}</span></p>
+          <p class="car-item">Кузов: <span>{{type}}</span></p>
+          <p class="car-item">Цвет: <span>{{color}}</span></p>
+          <p class="car-item">Год выпуска: <span>{{year}}</span></p>
+          <a href="/car/{{id}}/edit" class="car-item">Изменить данные</a>
+        </div>
       </div>
-      <div>
-        <p class="car-item">ФИО: <span>{{user.firstName}} {{user.lastName}}</span></p>
-        <p class="car-item">Дата рождения: <span>{{user.birthDate}}</span></p>
-        <p class="car-item">Телефон: <span>{{user.phone}}</span></p>
-        <p class="car-item">Email: <span>{{user.email}}</span></p>
-        <a href="/profile/edit" class="car-item">Редактировать</a>
-      </div>
+      {{/each}}
     </div>
   </div>
   <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">asdsadasd</div>

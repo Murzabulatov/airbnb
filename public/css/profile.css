@@ -26,22 +26,25 @@
   margin-top: 2px;
   margin-bottom: 0;
   font-size: small;
+  font-weight: bold;
 }
 
 .car-info{
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.car-card{
+  display: flex;
+  flex-direction: row;
+  align-items: start;
   background-color: rgb(194, 194, 194);
-  padding: 3em;
+  padding: 1em;
   border-radius: 10px;
   box-shadow: 0 0 7px #666; 
   margin-top: 2em;
-}
-
-.car-info div{
-  display: flex;
-  flex-direction: column;
-  align-items: start;
 }
 
 .carpicture{
@@ -57,4 +60,6 @@
   margin-top: 2px;
   margin-bottom: 0;
   font-size: small;
+  font-weight: bolder;
+  text-align: start;
 }
