@@ -33,9 +33,9 @@ router
       }
     }
 
-    let foundCars = await Car.find(objSearch);
+    let foundCars = await Car.find(objSearch).lean(); // БЕЗ LEAN не записывает новые поля к элементам массива (см)
     // Если результат поиска пустой - останавливаем работу.
-    if (foundCars.length === 0) return res.end();
+    //  if (foundCars.length === 0) return res.end();
 
     // YANDEX.MAP
     if (req.body.location?.length && req.body.distance.length) {
@@ -48,7 +48,18 @@ router
     }
     // console.log('==result==', foundCars);
 
-    return res.json(JSON.stringify(foundCars));
+    for (let car of foundCars) {
+      if (res.locals.username) {
+        car.login = true;
+      } else {
+        car.login = false;
+      }
+    }
+    if (foundCars.length) {
+      return res.json(JSON.stringify(foundCars));
+    } else {
+      return res.json(JSON.stringify(['nothing']));
+    }
   });
 
 // ФУНКЦИИ

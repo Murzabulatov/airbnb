@@ -83,3 +83,19 @@ body,
 body {
   font-family: 'Roboto', -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
  }
+
+dl.row {
+  margin-bottom: 0rem;
+}
+
+#carpic{
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  border: 3px solid green; 
+  box-shadow: 0 0 7px #666; 
+}
+
+.opisanie {
+  text-align: center;
+}
