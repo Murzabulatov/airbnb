@@ -31,7 +31,7 @@ function init() {
       },
       {
         preset: 'islands#circleIcon',
-        iconColor: '#3caa3c',
+        iconColor: '#3caa3c', // цвет нашей точки
       }
     );
 

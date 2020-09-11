@@ -57,11 +57,11 @@ function viewResult(arrayOfCars) {
     let mapCar = new ymaps.Placemark(
       car.location,
       {
-        balloonContent: `${car.brand} ${car.model} ${car.year}`,
+        balloonContent: `${car.brand} ${car.model} ${car.year}`, //текст внутри баллона
       },
       {
         preset: 'islands#circleIcon',
-        iconColor: '#32CD32',
+        iconColor: '#32CD32', // цвет результатов поиска
       }
     );
 
