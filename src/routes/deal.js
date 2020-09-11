@@ -23,8 +23,8 @@ router
       price,
     } = carIn;
     const { day, week, month } = price;
-    console.log(req.params.idCar);
-    console.log(day);
+    console.log('idCar', req.params.idCar);
+    console.log(model);
     res.render('deal', {
       brand,
       model,
@@ -38,6 +38,7 @@ router
       day,
       week,
       month,
+      deal: true,
     });
   })
   .post(async (req, res) => {
@@ -45,7 +46,9 @@ router
       { car: req.params.idCar },
       { rentStart: 1, rentStop: 1 }
     );
+    console.log('arrayOfDeal', arrayOfDeal);
     let arrayOfDates = [];
+
     arrayOfDeal.forEach((deal) => {
       if (deal.rentStart && deal.rentStop) {
         for (
@@ -53,9 +56,12 @@ router
           iter <= deal.rentStop.valueOf();
           iter += 86400000
         ) {
-          arrayOfDates.push(
-            `${tempData.getFullYear()}/${tempData.getMonth()}/${tempData.getDay()}`
-          );
+          let tempData = new Date(iter);
+          console.log('tempData', tempData);
+          // arrayOfDates.push(
+          //   `${tempData.getFullYear()}/${tempData.getMonth()}/${tempData.getDay()}`
+          // );
+          arrayOfDates.push(tempData);
         }
       }
     });

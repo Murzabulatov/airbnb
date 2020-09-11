@@ -1,65 +1,59 @@
 <div class="card mb-3">
-    <div class="row no-gutters"  style="min-height: 400px;">
-        <div class="col-md-4">
-<!--            <img src="..." class="card-img" alt="...">-->
-        </div>
-        <div class="col-md-8">
-            <div class="card-body">
-                <h3 class="card-title" > <em>{{{brand}}}, {{{model}}}</em></h3>
-                <div class="row">
-                <div class="col-md-6">
-                    <p>КПП: {{{gearbox}}}</p>
-                    <p>Кондиционер: {{{ac}}}</p>
-                    <p>Количество мест: {{{seats}}}</p>
-                </div>
-                <div class="col-md-6">
-                    <p>Тип кузова: {{{type}}}</p>
-                    <p>цвет: {{{color}}}</p>
-                    <p>год выпуска: {{{year}}}</p>
-                </div>
-                </div>
-<h4>Цена за: день {{{day}}}, неделю {{{week}}}, месяц {{{month}}}</h4>
-
-<!-- Начало Календаря -->
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12">
-
-                            <div class="form-group col-md-6">
-                                <div class="input-group date" id="datetimepicker1">
-                                    <input type="text" class="form-control" />
-                                    <span class="input-group-addon">
-				<span class="glyphicon-calendar glyphicon"></span>
-			  </span>
-                                </div>
-                            </div>
-
-                            <div class="form-group col-md-6">
-                                <div class="input-group date" id="datetimepicker2">
-                                    <input type="text" class="form-control" />
-                                    <span class="input-group-addon">
-          <span class="glyphicon-calendar glyphicon"></span>
-          </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <link rel="stylesheet" href="/css/bootstrap.min.css" />
-                <link rel="stylesheet" href="/css/bootstrap-datetimepicker.min.css" />
-                <script src="/js/jquery-3.2.1.min.js"></script>
-                <script src="/js/moment-with-locales.min.js"></script>
-                <script src="/js/bootstrap.min.js"></script>
-                <script src="/js/bootstrap-datetimepicker.min.js"></script>
-                <script src="/js/editerCalendar.js"></script>
-<!-- Конец Календаря -->
-
-
-                <p class="card-text">{{{description}}}</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
+  <div class="row no-gutters" style="min-height: 400px;">
+    <div class="col-md-4">
+      <!--            <img src="..." class="card-img" alt="...">-->
     </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h3 class="card-title"> <em>{{{brand}}}, {{{model}}}</em></h3>
+        <div class="row">
+          <div class="col-md-6">
+            <p>КПП: {{{gearbox}}}</p>
+            <p>Кондиционер: {{{ac}}}</p>
+            <p>Количество мест: {{{seats}}}</p>
+          </div>
+          <div class="col-md-6">
+            <p>Тип кузова: {{{type}}}</p>
+            <p>цвет: {{{color}}}</p>
+            <p>год выпуска: {{{year}}}</p>
+          </div>
+        </div>
+        <h4>Цена за: день {{{day}}}, неделю {{{week}}}, месяц {{{month}}}</h4>
+
+        <!-- Начало Календаря -->
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+
+              <div class="form-group col-md-6">
+                <div class="input-group date" id="datetimepicker1">
+                  <input type="text" class="form-control" />
+                  <span class="input-group-addon">
+                    <span class="glyphicon-calendar glyphicon"></span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="form-group col-md-6">
+                <div class="input-group date" id="datetimepicker2">
+                  <input type="text" class="form-control" />
+                  <span class="input-group-addon">
+                    <span class="glyphicon-calendar glyphicon"></span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Конец Календаря -->
+
+
+        <p class="card-text">{{{description}}}</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
 </div>
 
 
@@ -73,6 +67,5 @@
 
 
 </body>
+
 </html>
-
-
