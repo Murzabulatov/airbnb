@@ -256,6 +256,7 @@ function viewResult(arrayOfCars) {
 
 
   result.innerHTML = resultHTML;
+  location.href = '#result';
 }
 
 const resetButton = document.querySelector('#reset');
