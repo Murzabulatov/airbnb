@@ -39,6 +39,12 @@ const translator = {
   'lime': 'Липовый цвет',
   'azure': 'Голубой',
   'indigo': 'Цвет индиго',
+  'purple': 'Малиновый',
+  'orange': 'Оранжевый',
+  'turquoise': 'Бирюзовый',
+  'maroon': 'Бордовый',
+  'silver': 'Серебряный',
+  'salmon': 'Лососевый',
 }
 
 formSearch.addEventListener('submit', callbackForm);
@@ -98,7 +104,8 @@ function viewResult(arrayOfCars) {
         car.location,
         {
           balloonContent: `${car.brand} ${car.model}, ${car.year}
-          <br>от ${car.price.month} руб/день`,
+          <br>от ${car.price.month} руб/день 
+          <br> <a href=/deal/new/${car._id}>Посмотреть</a>`,
         },
         {
           preset: 'islands#circleIcon',
