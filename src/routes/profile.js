@@ -6,7 +6,6 @@ const router = express.Router();
 
 router.get('/', isAuth, async (req, res) => {
   const user = await User.findOne({ _id: req.session?.user.id }, { password: false }).populate(['cars', 'deals']);
-  console.log(user);
   res.render('profile', { user });
 });
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 const formSearch = document.forms.formSearch;
 let result = document.getElementById('result');
 let resultArr = [];
@@ -65,7 +66,6 @@ async function callbackForm(event) {
     location: carLocation?.geometry._coordinates,
     distance: event.target.distance.value,
   };
-  // console.log(formSend);
 
   if (
     (formSend.location && formSend.distance === '') ||
@@ -83,8 +83,7 @@ async function callbackForm(event) {
   });
 
   let data = JSON.parse(await response.json());
-  // data = JSON.parse(data);
-  console.log(data);
+
   result.innerHTML = '';
   viewResult(data);
 }

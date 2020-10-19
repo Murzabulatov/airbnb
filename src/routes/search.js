@@ -50,9 +50,7 @@ router
         Number(req.body.distance),
         foundCars,
       );
-      // console.log('findCarsWithLoc', foundCars);
     }
-    // console.log('==result==', foundCars);
 
     for (const car of foundCars) {
       if (res.locals.username) {
