@@ -2,7 +2,7 @@ const isAuth = (req, res, next) => {
   if (req.session.user) {
     return next();
   }
-  res.redirect('/');
+  return res.redirect('/');
 };
 
 module.exports = isAuth;

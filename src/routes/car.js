@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 const express = require('express');
 
 const router = express.Router();
@@ -21,7 +22,5 @@ router
 
     res.end();
   });
-
-router.route('/:id').post(async (req, res) => {});
 
 module.exports = router;

@@ -23,8 +23,7 @@ router
       price,
     } = carIn;
     const { day, week, month } = price;
-    console.log('idCar', req.params.idCar);
-    console.log(model);
+
     res.render('deal', {
       brand,
       model,
@@ -42,12 +41,11 @@ router
     });
   })
   .post(async (req, res) => {
-    let arrayOfDeal = await Deal.find(
+    const arrayOfDeal = await Deal.find(
       { car: req.params.idCar },
-      { rentStart: 1, rentStop: 1 }
+      { rentStart: 1, rentStop: 1 },
     );
-    console.log('arrayOfDeal', arrayOfDeal);
-    let arrayOfDates = [];
+    const arrayOfDates = [];
 
     arrayOfDeal.forEach((deal) => {
       if (deal.rentStart && deal.rentStop) {
@@ -56,8 +54,7 @@ router
           iter <= deal.rentStop.valueOf();
           iter += 86400000
         ) {
-          let tempData = new Date(iter);
-          console.log('tempData', tempData);
+          const tempData = new Date(iter);
           // arrayOfDates.push(
           //   `${tempData.getFullYear()}/${tempData.getMonth()}/${tempData.getDay()}`
           // );

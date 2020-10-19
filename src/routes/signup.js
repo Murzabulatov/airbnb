@@ -1,9 +1,9 @@
 const express = require('express');
-const router = express.Router();
 const bcrypt = require('bcrypt');
-const mongoose = require('mongoose');
 const User = require('../models/user.js');
 require('dotenv').config();
+
+const router = express.Router();
 
 function serializeUser(user) {
   return {
@@ -16,7 +16,7 @@ function failAuth(res) {
   return res.status(401).end();
 }
 
-router.get('/', (req, res, next) => {
+router.get('/', (req, res) => {
   res.render('signup');
 });
 

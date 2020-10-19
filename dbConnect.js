@@ -15,7 +15,7 @@ const dbConnect = () => {
     (err) => {
       if (err) throw err;
       console.log('DB connection success');
-    }
+    },
   );
 };
 
