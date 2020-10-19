@@ -1,6 +1,7 @@
-CarBNB
-// Salavat, Nikita, Hasan, Vadim
+## CarBNB
+*Salavat, Nikita, Hasan, Vadim*
 
 Carbnb - это сервис №1 по аренде автомобиля. Просто найди подходящее для тебя авто и отправляйся в путешествие с комфортом.
+
 
 
