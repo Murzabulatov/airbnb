@@ -8,16 +8,13 @@ newUserForm.addEventListener('submit', async (event) => {
     password: { value: password },
     corpassword: { value: corpassword },
   } = event.target;
-  console.log(username, password, corpassword);
+
   if (username.length >= 4 && password.length >= 4) {
-    console.log('Ok');
     if (password === corpassword) {
-      console.log('Ok');
       const body = {
         username,
         password,
       };
-      console.log(body);
       const response = await fetch('/signup', {
         method: 'POST',
         headers: {
@@ -26,6 +23,7 @@ newUserForm.addEventListener('submit', async (event) => {
         body: JSON.stringify(body),
       });
       // window.location.assign('/profile');
+      // eslint-disable-next-line no-undef
       window.location.assign('/');
     } else {
       newUserForm.insertAdjacentHTML('afterend', 'Заполните форму корректно!');

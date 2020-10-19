@@ -1,10 +1,6 @@
-console.log('editercalendar');
-
 let dataPic1dis;
 let dataPic2dis = ['2017/11/10'];
 let today = moment(new Date()).format('DD.MM.YYYY');
-console.log(typeof today);
-//console.log(moment(today).format('DD.MM.YYYY'));
 
 async function start() {
   console.log('start');
@@ -19,7 +15,6 @@ async function start() {
 
   jQuery(document).ready(function ($) {
     $(function () {
-      console.log('dataPic1dis', dataPic1dis);
       $('#datetimepicker1').datetimepicker({
         locale: 'ru',
         stepping: 10,
@@ -37,7 +32,5 @@ async function start() {
       });
     });
   });
-
-  // console.log(dataPic1dis);
 }
 start();

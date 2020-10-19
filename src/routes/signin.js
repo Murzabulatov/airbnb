@@ -1,18 +1,14 @@
 const express = require('express');
-const router = express.Router();
 const bcrypt = require('bcrypt');
-const mongoose = require('mongoose');
 const User = require('../models/user.js');
+
+const router = express.Router();
 
 function serializeUser(user) {
   return {
     id: user.id,
     username: user.username,
   };
-}
-
-function failAuth(res) {
-  return res.status(401).end();
 }
 
 router.get('/', (req, res) => {
