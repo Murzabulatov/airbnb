@@ -1,8 +1,23 @@
-## CarBNB
-*Salavat, Nikita, Hasan, Vadim*
+# CarBNB  
 
-Carbnb - это сервис №1 по аренде автомобиля. Просто найди подходящее для тебя авто и отправляйся в путешествие с комфортом.
+**Carbnb** - это сервис №1 по аренде автомобиля. Просто найди подходящее для тебя авто и отправляйся в путешествие с комфортом.
 
-<img src="https://user-images.githubusercontent.com/67856937/96463004-eb469880-122e-11eb-9438-e9e05efbe889.png">
-<img src="https://user-images.githubusercontent.com/67856937/96463014-eeda1f80-122e-11eb-8f8d-60b1b26e0ed8.png">
+# Getting Started
+`npm install`  
+`npm start`  
+
+# MVP Functionality
+* Поиск авто по характеристикам
+* Поиск авто по координатам в определенном радиусе (API Яндекс.Карт)
+* Добавление авто и его месторасположение
+* Регистрация на сайте
+
+<img src="https://user-images.githubusercontent.com/67856937/96696333-514c3080-1393-11eb-9add-74d895a812bb.png">
+<img src="https://user-images.githubusercontent.com/67856937/96696336-51e4c700-1393-11eb-8e74-72adb933b078.png">
+
+  
+# Next Steps
+* Сделать адаптивную верстку  
+* Мобильное приложение  
+* Расширить функционал приложения  
 
